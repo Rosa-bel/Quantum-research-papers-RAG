@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "question": "What optimizer does the paper use to train the VQE ansatz?",
+    "reference_answer": "COBYLA",
+    "source": "papers/vqe_paper.pdf",
+    "page": 5,
+    "type": "factual"
+  }
+]
