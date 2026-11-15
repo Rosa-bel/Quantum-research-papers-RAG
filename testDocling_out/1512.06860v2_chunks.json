@@ -1,0 +1,754 @@
+[
+  {
+    "id": "1512.06860v2.pdf_0000",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "P. J. J. O'Malley,1, ∗ R. Babbush,2, ∗ I. D. Kivlichan,3 J. Romero,3 J. R. McClean,4 R. Barends,5 J. Kelly,5 P. Roushan,5 A. Tranter,6, 7 N. Ding,2 B. Campbell,1 Y. Chen,5 Z. Chen,1 B. Chiaro,1 A. Dunsworth,1 A. G. Fowler,5 E. Jeffrey,5 E. Lucero,5 A. Megrant,5 J. Y. Mutus,5 M. Neeley,5 C. Neill,1 C. Quintana,1 D. Sank,5 A. Vainsencher,1 J. Wenner,1 T. C. White,5 P. V. Coveney,7 P. J. Love,6 H. Neven,2 A. Aspuru-Guzik,3 and J. M. Martinis5, 1\n\n1Department of Physics, University of California, Santa Barbara, CA 93106, USA\n\n2Google Inc., Venice, CA 90291, USA\n\n3Department of Chemistry, Harvard University, Cambridge, MA 02138, USA\n\n4Computational Research Division, Lawrence Berkeley National Laboratory, Berkeley CA 94720, USA\n\n5Google Inc., Santa Barbara, CA 93117, USA\n\n6Department of Physics, Tufts University, Medford, MA 02155, USA\n\n7Center for Computational Science and Department of Chemistry, University College London, WC1H 0AJ, UK"
+  },
+  {
+    "id": "1512.06860v2.pdf_0001",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "We report the first electronic structure calculation performed on a quantum computer without exponentially costly precompilation. We use a programmable array of superconducting qubits to compute the energy surface of molecular hydrogen using two distinct quantum algorithms. First, we experimentally execute the unitary coupled cluster method using the variational quantum eigensolver. Our efficient implementation predicts the correct dissociation energy to within chemical accuracy of the numerically exact result. Second, we experimentally demonstrate the canonical quantum algorithm for chemistry, which consists of Trotterization and quantum phase estimation. We compare the experimental performance of these approaches to show clear evidence that the variational quantum eigensolver is robust to certain errors. This error tolerance inspires hope that variational quantum simulations of classically intractable molecules may be viable in the near future."
+  },
+  {
+    "id": "1512.06860v2.pdf_0002",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "Universal and efficient simulation of physical systems is among the most compelling applications of quantum computing. In particular, quantum simulation of molecular energies, which enables numerically exact prediction of chemical reaction rates, promises significant advances in our understanding of chemistry and could enable in silico design of new catalysts, pharmaceuticals and materials. As scalable quantum hardware becomes increasingly viable, chemistry simulation has attracted significant attention since classically intractable molecules require a relatively modest number of qubits and because solutions have commercial value associated with their chemical applications."
+  },
+  {
+    "id": "1512.06860v2.pdf_0003",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "The fundamental challenge in building a quantum computer is realizing high-fidelity operations in a scalable architecture. Superconducting qubits have made rapid progress in recent years and can be fabricated in microchip foundries and manufactured at scale. Recent experiments have shown logic gate fidelities at the threshold required for quantum error correction and dynamical suppression of bit-flip errors. Here, we use the device reported in to implement and compare two quantum algorithms for chemistry. We have previously characterized our hardware using randomized benchmarking but related metrics (e.g. fidelities) only loosely bound how well our devices can simulate molecular energies. Thus, studying the performance of hardware on small instances of real problems is an important way to measure progress towards viable quantum computing."
+  },
+  {
+    "id": "1512.06860v2.pdf_0004",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "Our first experiment demonstrates the recentlyproposed variational quantum eigensolver (VQE), introduced in. Our VQE experiment achieves chemical accuracy and is the first scalable quantum simulation of molecular energies performed on quantum hardware, in the sense that our algorithm is efficient and does not benefit from exponentially costly precompilation. When implemented using a unitary coupled cluster ansatz, VQE cannot be efficiently simulated classically and empirical evidence suggests that answers are accurate enough to predict chemical rates. Because VQE only requires short state preparation and measurement sequences, it has been suggested that classically intractable computations might be possible using VQE without the overhead of error correction. Our experiments substantiate this notion; the robustness of the VQE to systematic device errors allows the experiment to achieve chemical accuracy."
+  },
+  {
+    "id": "1512.06860v2.pdf_0005",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "Our second experiment realizes the original algorithm for the quantum simulation of chemistry, introduced in. This approach involves Trotterized simulation and the quantum phase estimation algorithm (PEA). We experimentally perform this entire algorithm, including both key components, for the first time. While PEA has asymptotically better scaling in terms of precision than VQE, long and coherent gate sequences are required for its accurate implementation."
+  },
+  {
+    "id": "1512.06860v2.pdf_0006",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      1
+    ],
+    "text": "The phase estimation component of the canonical quantum chemistry algorithm has been demonstrated in a photonic system, a nuclear magnetic resonance system, and a nitrogen-vacancy center system. While all three experiments obtained molecular energies to incredibly high precision, none of the experiments implemented the propagator in a scalable fashion (e.g. using Trotterization) as doing so requires long coherent evolutions. Furthermore, none of these experiments used more than a single qubit or qutrit to represent the entire molecule. This was possible due to the use of the configuration basis, which is not scalable but renders the experimental challenge much easier. Furthermore, all of these implementations applied the logic gates with a single, totally controlled pulse, as opposed to compiling the algorithm to a universal set of gates as we do."
+  },
+  {
+    "id": "1512.06860v2.pdf_0007",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      2
+    ],
+    "text": "FIG. 1. Hardware and software schematic of the variational quantum eigensolver. (Hardware) micrograph shows two Xmon transmon qubits and microwave pulse sequences to perform single-qubit rotations (thick lines), DC pulses for two-qubit entangling gates (dashed lines), and microwave spectrosopy tones for qubit measurements (thin lines). (Software) quantum circuit diagram shows preparation of Hartree-Fock state, followed by application of the unitary coupled cluster ansatz in Eq. (3) and efficient partial tomography (Rt) to measure the expectation values in Eq. (1). Finally, the total energy is computed according to Eq. (4) and provided to a classical optimizer which suggests new parameters."
+  },
+  {
+    "id": "1512.06860v2.pdf_0008",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      2
+    ],
+    "text": "There have been two previous experimental demonstrations of VQE: first in a photonic system and later in an ion trap. Both experiments validated the variational approach and the latter implemented an ansatz based on unitary coupled cluster. All prior experiments focused on either molecular hydrogen or helium hydride but none of these prior experiments employed a scalable qubit representation such as second quantization. Instead, all five prior experiments represent the Hamiltonian in a configuration basis that cannot be efficiently decomposed as a sum of local Hamiltonians, and then exponentiate this exponentially large matrix as a classical preprocessing step."
+  },
+  {
+    "id": "1512.06860v2.pdf_0009",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      2
+    ],
+    "text": "Until this work, important aspects of scalable chemistry simulation such as the Jordan-Wigner transformation or the Bravyi-Kitaev transformation had never been used to represent a molecule in an experiment; however, prior experiments such as have previously used the Jordan-Wigner representation to simulate fermions on a lattice. In both experiments presented here, we simulate the dissociation of molecular hydrogen in the minimal basis of Hartree-Fock orbitals, represented using the Bravyi-Kitaev transformation of the second quantized molecular Hamiltonian. As shown in Appendix A, the molecular hydrogen Hamiltonian can be scalably written as\n\nwhere {Xi, Zi, Yi} denote Pauli matrices acting on the ith qubit and the real scalars {gγ} are efficiently computable functions of the hydrogen-hydrogen bond length, R."
+  },
+  {
+    "id": "1512.06860v2.pdf_0010",
+    "source": "1512.06860v2.pdf",
+    "heading": "Scalable Quantum Simulation of Molecular Energies",
+    "heading_path": "Scalable Quantum Simulation of Molecular Energies",
+    "pages": [
+      2
+    ],
+    "text": "The ground state energy of Eq. (1) as a function of R defines an energy surface. Such energy surfaces are used to compute chemical reaction rates which are exponentially sensitive to changes in energy. If accurate energy surfaces are obtained, one can use established methods such as classical Monte Carlo or Molecular Dynamics simulations to obtain accurate free energies, which provide the rates directly via the Erying equation. At room temperature, a relative error in energy of 1.6×10-3 Hartree (1 kcal/mol or 0.043 eV) translates to a chemical rate that differs from the true value by an order of magnitude; therefore, 1.6×10-3 Hartree is known as \"chemical accuracy\". Our goal then is to compute the lowest energy eigenvalues of Eq. (1) as a function of R, to within chemical accuracy."
+  },
+  {
+    "id": "1512.06860v2.pdf_0011",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      2,
+      3
+    ],
+    "text": "Many popular classical approximation methods for the electronic structure problem involve optimizing a parameterized guess wavefunction (known as an \"ansatz\") according to the variational principle. If we parameterize an ansatz |ϕ(⃗ θ)〉 by the vector ⃗ θ then the variational principle holds that\n\nFIG. 2. Variational quantum eigensolver: raw data and computed energy surface. (a) Data showing the expectation values of terms in Eq. (1) as a function of θ, as in Eq. (3). Black lines nearest to the data show the theoretical values. While such systematic phase errors would prove disastrous for PEA, our VQE experiment is robust to this effect. (b) Experimentally measured energies (in Hartree) as a function of θ and R. This surface is computed from Figure 2a according to Eq. (4). The white curve traces the theoretical minimum energy; the values of theoretical and experimental minima at each R are plotted in Figure 3a. Errors in this surface are given in Figure 6."
+  },
+  {
+    "id": "1512.06860v2.pdf_0012",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      3
+    ],
+    "text": "where E0 is the smallest eigenvalue of the Hamiltonian H. Accordingly, E0 can be estimated by selecting the parameters ⃗ θ which minimize the left-hand side of Eq. (2).\n\nWhile the ground state wavefunction is likely to be in superposition over an exponential number of states in the basis of molecular orbitals, most classical approaches restrict the ansatz to the support of polynomially many basis elements due to memory limitations. However, quantum circuits can prepare entangled states which are not known to be efficiently representable classically. In VQE, the state |ϕ(⃗ θ)〉 is parameterized by the action of a quantum circuit U(⃗ θ) on an initial state |φ〉, i.e. |ϕ(⃗ θ)〉 ≡ U(⃗ θ) |φ〉. Even if |φ〉 is a simple product state and U(⃗ θ) is a very shallow circuit, |ϕ(⃗ θ)〉 can contain complex many-body correlations and span an exponential number of standard basis states."
+  },
+  {
+    "id": "1512.06860v2.pdf_0013",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      3
+    ],
+    "text": "We can express the mapping U(⃗ θ) as a concatenation of parameterized quantum gates, U1(θ1)U2(θ2) · · · Un(θn). In this work, we parameterize our circuit according to unitary coupled cluster theory. As described in Appendix D, unitary coupled cluster predicts that the ground state of Eq. (1) can be expressed as\n\nwhere |φ〉 = |01〉 is the Hartree-Fock (mean-field) state of molecular hydrogen in the representation of Eq. (1). As discussed in Appendix D, unitary coupled cluster is widely believed to be classically intractable and is known to be strictly more powerful than the \"gold standard\" of classical electronic structure theory, coupled cluster. The gate model circuit that performs this unitary mapping is shown in the software section of Figure 1."
+  },
+  {
+    "id": "1512.06860v2.pdf_0014",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      3
+    ],
+    "text": "VQE solves for the parameter vector ⃗ θ with a classical optimization routine. First, one prepares an initial ansatz |ϕ(⃗ θ0)〉 and then estimates the ansatz energy E(⃗ θ0) by measuring the expectation values of each term in Eq. (1) and summing these values together as\n\nwhere the gγ are scalars and the Hγ are local Hamiltonians as in Eq. (1). The initial guess ⃗ θ0 and the corresponding objective value E(⃗ θ0) are then fed to a classical greedy minimization routine (e.g. gradient descent), which then suggests a new setting of the parameters ⃗ θ1. The energy E(⃗ θ1) is then measured and returned to the classical outer loop. This continues for m iterations until the energy converges to a minimum value E(⃗ θm) which represents the VQE approximation to E0."
+  },
+  {
+    "id": "1512.06860v2.pdf_0015",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      3
+    ],
+    "text": "Because our experiment requires only a single variational parameter, as in Eq. (3), we elected to scan a thousand different values of θ ∈ [-π, π) in order to obtain expectation values which define the entire potential energy curve. We did this to simplify the classical feedback routine but at the cost of needing slightly more experimental trials. These expectation values are shown in Figure 2a and the corresponding energy surfaces at different bond lengths are shown in Figure 2b. The energy surface in Figure 2b was locally optimized at each bond length to emulate an on-the-fly implementation."
+  },
+  {
+    "id": "1512.06860v2.pdf_0016",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      4
+    ],
+    "text": "FIG. 3. Computed H2 energy curve and errors. (a) Energy surface of molecular hydrogen as determined by both VQE and PEA. VQE approach shows dissociation energy error of (8 ± 5) × 10-4 Hartree (error bars on VQE data are smaller than markers). PEA approach shows dissociation energy error of (1 ± 1) × 10-2 Hartree. (b) Errors in VQE energy surface. Red dots show error in the experimentally determined energies. Green diamonds show the error in the energies that would have been obtained experimentally by running the circuit at the theoretically optimal θ instead of the experimentally optimal θ. The discrepancy between blue and red dots provides experimental evidence for the robustness of VQE which could not have been anticipated via numerical simulations. The gray band encloses the chemically accurate region relative to the experimental energy of the atomized molecule. The dissociation energy is relative to the equilibrium geometry, which falls within this envelope."
+  },
+  {
+    "id": "1512.06860v2.pdf_0017",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      4
+    ],
+    "text": "Figure 3a shows the exact and experimentally determined energies of molecular hydrogen at different bond lengths. The minimum energy bond length (R = 0.72 ˚A) corresponds to the equilibrium bond length, whereas the asymptote on the right part of the curve corresponds to dissociation into two hydrogen atoms. The energy difference between these points is the dissociation energy, and the exponential of this quantity determines the chemical dissociation rate. Our VQE experiment correctly predicts this quantity with an error of (8 ± 5) × 10-4 Hartree, which is below the chemical accuracy threshold. Error bars are computed with Gaussian process regression which interpolates the energy surface based on local errors from the shot-noise limited expectation value measurements in Figure 2a."
+  },
+  {
+    "id": "1512.06860v2.pdf_0018",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      4
+    ],
+    "text": "Errors in our simulation as a function of R are shown in Figure 3b. The curve in Figure 3b becomes nearly flat past R = 2.5 ˚A because the same angle is experimentally chosen for each R past this point. Note that the experimental energies are always greater than or equal to the exact energies due to the variational principle. Figure 3b shows that VQE has substantial robustness to systematic errors. While this possibility had been previously hypothesized, we report the first experimental signature of robustness and show that it allows for a successful computation of the dissociation energy. By performing (inefficient) classical simulations of the circuit in Figure 1, we identify the theoretically optimal value of θ at each R."
+  },
+  {
+    "id": "1512.06860v2.pdf_0019",
+    "source": "1512.06860v2.pdf",
+    "heading": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "heading_path": "I. VARIATIONAL QUANTUM EIGENSOLVER",
+    "pages": [
+      4
+    ],
+    "text": "In fact, for this system, at every value of R there exists θ such that E(θ) = E0. However, due to experimental error, the theoretically optimal value of θ differs substantially from the experimentally optimal value of θ. This can be seen in Figure 3b from the large discrepancy between the green diamonds (experimental energy errors at theoretically optimal θ) and the red dots (experimental energy errors at experimentally optimal θ). The experimental energy curve at theoretically optimal θ shows an error in the dissociation energy of 1.1 × 10-2 Hartree, which is more than an order of magnitude worse. One could anticipate this discrepancy by looking at the raw data in Figure 2a which shows that the experimentally measured expectation values deviate considerably from the predictions of theory. In a sense, the green diamonds in Figure 3b show the performance of a non-variational algorithm, which in theory gives the exact answer, but in practice fails due to systematic errors."
+  },
+  {
+    "id": "1512.06860v2.pdf_0020",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      4
+    ],
+    "text": "We also report an experimental demonstration of the original quantum algorithm for chemistry. Similar to VQE, the first step of this algorithm is to prepare the system register in a state having good overlap with the ground state of the Hamiltonian H. In our case, we begin with the Hartree-Fock state, |φ〉. We then evolve this state under H using a Trotterized approximation to the time-evolution operator. The execution of this unitary is controlled on an ancilla initialized in the superposition state (|0〉 + |1〉)/√2. The time-evolution operator can be approximated using Trotterization as"
+  },
+  {
+    "id": "1512.06860v2.pdf_0021",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      5
+    ],
+    "text": "FIG. 4. Hardware and software schematic of the Trotterized phase estimation algorithm. (Hardware) a micrograph shows three Xmon transmon qubits and microwave pulse sequences, including (i) the variable amplitude CZφ (not used in Figure 1) and (ii) dynamical decoupling pulses not shown in logical circuit. (Software) state preparation includes putting the ancilla in a superposition state and compensating for previously measured bits of the phase using the gate ZΦk (see text). The bulk of the circuit is the evolution of the system under a Trotterized Hamiltonian controlled by the ancilla. Bit jk is determined by a majority vote of the ancilla state over one thousand repetitions.\n\nwhere the Hγ are local Hamiltonians as in Eq. (1) and the error in this approximation depends linearly on the time step ρ-1. Application of the propagator induces a phase on the system register so that"
+  },
+  {
+    "id": "1512.06860v2.pdf_0022",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      5
+    ],
+    "text": "where |n〉 are eigenstates of the Hamiltonian such that H |n〉 = En |n〉 and an = 〈n|φ〉. By controlling this evolution on the ancilla superposition state, one entangles the system register with the ancilla. Accordingly, by measuring the phase between the |0〉 state and |1〉 state of the ancilla, one measures the phase Ent and collapses the system register to the state |n〉 with probability |an|2.\n\nOur PEA implementation is based on a modification of Kitaev's iterative phase estimation algorithm. The circuit used is shown in Figure 4 and detailed descriptions of the subroutines used to control UTrot(2k t0) on an ancilla are shown in Appendix C. The rotation ZΦ(k) in Figure 4 feeds back classical information from the prior k - 1 measurements using phase kickback as"
+  },
+  {
+    "id": "1512.06860v2.pdf_0023",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      5
+    ],
+    "text": "With iterative phase estimation, one measures the phase accumulated on the system one bit at a time. Even when a0 is very small, one can use iterative phase estimation to measure eigenvalues if the system register remains coherent throughout the entire phase determination. Since the Hartree-Fock state has strong overlap with the ground state of molecular hydrogen (i.e. |〈0|φ〉|2 > 0.5) we were able to measure each bit independently with a majorityvoting scheme, reducing coherence requirements. For b bits, the ground state energy is digitally computed as a binary expansion of the measurement outcomes,"
+  },
+  {
+    "id": "1512.06860v2.pdf_0024",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      5
+    ],
+    "text": "Experimentally computed energies are plotted alongside VQE results in Figure 3a. Because energies are measured digitally in iterative phase estimation, the experimentally determined PEA energies in Figure 3a agree exactly with theoretical simulations of Figure 4, which differ from the exact energies due to the approximation of Eq. (5). The primary difficulty of the PEA experiment is that the controlled application of UTrot(2k t0) requires complex quantum circuitry and long coherent evolutions. Accordingly, we approximated the propagator in Eq. (5) using a single Trotter step (ρ = 1), which is not sufficient for chemical accuracy. Our PEA experiment shows an error in the dissociation energy of (1±1)×10-2 Hartree."
+  },
+  {
+    "id": "1512.06860v2.pdf_0025",
+    "source": "1512.06860v2.pdf",
+    "heading": "II. PHASE ESTIMATION ALGORITHM",
+    "heading_path": "II. PHASE ESTIMATION ALGORITHM",
+    "pages": [
+      6
+    ],
+    "text": "In addition to taking only one Trotter step, we performed classical simulations of the error in Eq. (5) under different orderings of the Hγ in order to find the optimal Trotter sequences at each value of R. The Trotter sequences used in our experiment as well as parameters such as t0 are reported in the Appendix C. Since this optimization is intractable for larger molecules, our PEA protocol benefited from inefficient classical preprocessing (unlike our VQE implementation). Nevertheless, this is the first time the canonical quantum algorithm for chemistry has been executed in its entirety and as such, represents a significant step towards scalable implementations."
+  },
+  {
+    "id": "1512.06860v2.pdf_0026",
+    "source": "1512.06860v2.pdf",
+    "heading": "III. EXPERIMENTAL METHODS",
+    "heading_path": "III. EXPERIMENTAL METHODS",
+    "pages": [
+      6
+    ],
+    "text": "Both algorithms are implemented with a superconducting quantum system based on the Xmon, a variant of the planar transmon qubit, in a dilution refrigerator with a base temperature of 20 mK. Each qubit consists of a SQUID (superconducting quantum interference device), which provides a tunable nonlinear inductance, and a large X-shaped capacitor; qubit frequencies are tunable up to 6 GHz and have a nonlinearity of (ω21 - ω10) = -0.22 GHz. The qubits are capacitively coupled to their nearest neighbors in a linear chain pattern, with coupling strengths of 30 MHz. Single-qubit quantum gates are implemented with microwave pulses and tuned using closed-loop optimization with randomized benchmarking. Qubit state measurement is performed in a dispersive readout scheme with capacitively coupled resonators at 6.6-6.8 GHz. For details of the device fabrication and conventions for reporting qubit parameters, see."
+  },
+  {
+    "id": "1512.06860v2.pdf_0027",
+    "source": "1512.06860v2.pdf",
+    "heading": "III. EXPERIMENTAL METHODS",
+    "heading_path": "III. EXPERIMENTAL METHODS",
+    "pages": [
+      6
+    ],
+    "text": "Our entangling operation is a controlled-phase (CZφ) gate, accomplished by holding one of the qubits at a fixed frequency while adiabatically tuning the other close to an avoided level crossing of the |11〉 and |02〉 states. To produce the correct phase change φ, the acquired phase is measured with quantum state tomography versus the amplitude of the trajectory, and the amplitude for any given φ is then determined via interpolation. To minimize leakage out of the computation subspace during this operation, we increase the gate duration from the previously used 40 ns to 50 ns, and then shape the pulse trajectory. The CZφ gate as implemented here has a range of approximately 0.25 to 5.0 rad; for smaller values of φ, parasitic interactions with other qubits become nontrivial, and for larger φ, leakage is significant. For φ outside this range, the total rotation is accomplished with two physical gates. For CZφ gates with φ = π, the amplitude and shape of the trajectory are further optimized"
+  },
+  {
+    "id": "1512.06860v2.pdf_0028",
+    "source": "1512.06860v2.pdf",
+    "heading": "III. EXPERIMENTAL METHODS",
+    "heading_path": "III. EXPERIMENTAL METHODS",
+    "pages": [
+      6
+    ],
+    "text": "the total rotation is accomplished with two physical gates. For CZφ gates with φ = π, the amplitude and shape of the trajectory are further optimized with ORBIT. CZφ̸=π is only necessary in the PEA experiment (see Appendix C)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0029",
+    "source": "1512.06860v2.pdf",
+    "heading": "III. EXPERIMENTAL METHODS",
+    "heading_path": "III. EXPERIMENTAL METHODS",
+    "pages": [
+      6
+    ],
+    "text": "The gates used to implement both VQE and PEA are shown in Appendix B and Appendix C. A single VQE sequence consists of 11 single-qubit gates and two CZπ gates. A PEA sequence has at least 51 single-qubit gates, four CZφ̸=π gates, and ten CZπ gates; more were required when not all φ values are within the range that could be performed with a single physical gate."
+  },
+  {
+    "id": "1512.06860v2.pdf_0030",
+    "source": "1512.06860v2.pdf",
+    "heading": "IV. CONCLUSION",
+    "heading_path": "IV. CONCLUSION",
+    "pages": [
+      6
+    ],
+    "text": "We report the use of quantum hardware to experimentally compute the potential energy curve of molecular hydrogen using both PEA and VQE. We perform the first experimental implementation of the Trotterized molecular time-evolution operator and then measure energies using PEA. Due to the costly nature of Trotterization, we are able to implement only a single Trotter step, which is not enough to achieve chemical accuracy. By contrast, our VQE experiment achieves chemical accuracy and shows significant robustness to certain types of error. The comparison of these two approaches suggests that adaptive algorithms (e.g. VQE) may generally be more resilient for pre-error corrected quantum computing than traditional gate model algorithms (e.g. PEA)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0031",
+    "source": "1512.06860v2.pdf",
+    "heading": "IV. CONCLUSION",
+    "heading_path": "IV. CONCLUSION",
+    "pages": [
+      6
+    ],
+    "text": "The robustness of VQE is partially a consequence of the adaptive nature of the algorithm; the classical outer loop of VQE helps to avoid systematic errors by acting similarly to the calibration loops used to tune individual quantum gates. This minimization procedure treats the energy functional as a black box in that no assumptions are made about the actual circuit ansatz being implemented. Thus, VQE seeks to find the optimal parameters in a fashion that is blind to control errors, such as pulse imperfection, crosstalk and stray coupling in the device. We observe a remarkable increase in precision by using the experimentally optimal parameters rather than the theoretically optimal parameters. This finding inspires hope that VQE may provide solutions to classically intractable problems even without error correction. Additionally, these results motivate future experiments which take \"sublogical\" hardware calibration parameters, e.g. microwave pulse shapes, as variational parameters."
+  },
+  {
+    "id": "1512.06860v2.pdf_0032",
+    "source": "1512.06860v2.pdf",
+    "heading": "ACKNOWLEDGMENTS",
+    "heading_path": "ACKNOWLEDGMENTS",
+    "pages": [
+      6
+    ],
+    "text": "The authors thank Cornelius Hempel for discussions regarding VQE. J. R. M. is supported by the Luis W. Alvarez fellowship in Computing Sciences at Lawrence Berkeley National Laboratory. J. R. acknowledges the Air Force Office of Scientific Research for support under Award: FA9550-12-1-0046. A. A.-G. acknowledges the Army Research Office under Award: W911NF-15-10256 and the Defense Security Science Engineering Fellowship managed by the Office of Naval Research under award N00014-16-1-2008. P. J. L. acknowledges the support of the National Science Foundation under grant number PHY-0955518. Devices were made at the UCSB Nanofabrication Facility, a part of the NSF-funded National Nanotechnology Infrastructure Network, and at the NanoStructures Cleanroom Facility. The authors thank H. De Raedt, M. Nocon, D. Willsch and F. Jin who brought to our attention an error in the g0 values reported in an earlier version of this work."
+  },
+  {
+    "id": "1512.06860v2.pdf_0033",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR CONTRIBUTIONS",
+    "heading_path": "AUTHOR CONTRIBUTIONS",
+    "pages": [
+      7
+    ],
+    "text": "P. J. J. O. and R. Babbush contributed equally to this work. R. Babbush, H.N., A.A.-G. and J.M.M. designed the experiments. P.J.J.O. performed the experiments. J.K., R. Barends and A.M. fabricated the device. I.D.K., J.R., J.R.M., A.T., N.D., P.V.C. and P.J.L. helped R. Babbush and P.J.J.O. to compile quantum software and analyze data. R. Babbush, P.J.J.O., and J.M.M. co-wrote the manuscript. All other authors contributed to the fabrication process, experimental set-up and manuscript preparation."
+  },
+  {
+    "id": "1512.06860v2.pdf_0034",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7
+    ],
+    "text": "Correspondence and requests for materials should be addressed to P.J.J.O. (pomalley@google.com), R. Babbush (babbush@google.com), or J.M.M. (jmartinis@google.com).\n\nSeth Lloyd, \"Universal Quantum Simulators,\" Science 273, 1073-1078 (1996).\n\nAl´ an Aspuru-Guzik, Anthony D Dutoi, Peter J Love, and Martin Head-Gordon, \"Simulated Quantum Computation of Molecular Energies,\" Science 309, 1704 (2005).\n\nR Barends, J Kelly, A Megrant, A Veitia, D Sank, E Jeffrey, T C White, J Mutus, A G Fowler, Y Campbell Chen, Z Chen, B Chiaro, A Dunsworth, C Neill, P O'Malley, P Roushan, A Vainsencher, J Wenner, A N Korotkov, A N Cleland, and J Martinis, \"Superconducting quantum circuits at the surface code threshold for fault tolerance,\" Nature 508, 500-503 (2014)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0035",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7
+    ],
+    "text": "J. Kelly, R. Barends, A. G. Fowler, A. Megrant, E. Jeffrey, T. C. White, D. Sank, J. Y. Mutus, B. Campbell, Yu Chen, Z. Chen, B. Chiaro, A. Dunsworth, I.-C. Hoi, C. Neill, P. J. J. O'Malley, C. Quintana, P. Roushan, A. Vainsencher, J. Wenner, A. N. Cleland, and John M. Martinis, \"State preservation by repetitive error detection in a superconducting quantum circuit,\" Nature 519, 66-69 (2015).\n\nA.D. C´orcoles, Easwar Magesan, Srikanth J. Srinivasan, Andrew W. Cross, M. Steffen, Jay M. Gambetta, and Jerry M. Chow, \"Demonstration of a quantum error detection code using a square lattice of four superconducting qubits,\" Nature Communications 6, 6979 (2015).\n\nD Rist`e, S Poletto, M-Z Huang, A Bruno, V Vesterinen, O-P Saira, and L DiCarlo, \"Detecting bit-flip errors in a logical qubit using stabilizer measurements.\" Nature Communications 6, 6983 (2015)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0036",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7
+    ],
+    "text": "R Barends, L Lamata, J Kelly, L Garc´ıa-´Alvarez, A G Fowler, A Megrant, E Jeffrey, T C White, D Sank, J Y Mutus, B Campbell, Yu Chen, Z Chen, B Chiaro, A Dunsworth, I-C Hoi, C Neill, P J J O'Malley, C Quintana, P Roushan, A Vainsencher, J Wenner, E Solano, and John M Martinis, \"Digital quantum simulation of fermionic models with a superconducting circuit,\" Nature Communications 6, 7654 (2015).\n\nJames D Whitfield, Jacob Biamonte, and Al´ an AspuruGuzik, \"Simulation of electronic structure Hamiltonians using quantum computers,\" Mol. Phys. 109, 735-750 (2011).\n\nIvan Kassal, James Whitfield, Alejandro Perdomo-Ortiz, Man-Hong Yung, and Al´ an Aspuru-Guzik, \"Simulating Chemistry Using Quantum Computers,\" Ann. Rev. Phys. Chem. 62, 185-207 (2010).\n\nN Cody Jones, James D Whitfield, Peter L McMahon, Man-Hong Yung, Rodney Van Meter, Al´ an AspuruGuzik, and Yoshihisa Yamamoto, \"Faster quantum chemistry simulation on fault-tolerant quantum computers,\" New Journal of Physics 14, 115023 (2012)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0037",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7
+    ],
+    "text": "David Wecker, Bela Bauer, Bryan K. Clark, Matthew B. Hastings, and Matthias Troyer, \"Gate-count estimates for performing quantum chemistry on small quantum computers,\" Physical Review A 90, 1-13 (2014).\n\nDavid Poulin, M. B. Hastings, Dave Wecker, Nathan Wiebe, Andrew C. Doherty, and Matthias Troyer, \"The Trotter Step Size Required for Accurate Quantum Simulation of Quantum Chemistry,\" Quantum Information & Computation 15, 361-384 (2015).\n\nRyan Babbush, Jarrod McClean, Dave Wecker, Al´ an Aspuru-Guzik, and Nathan Wiebe, \"Chemical Basis of Trotter-Suzuki Errors in Chemistry Simulation,\" Physical Review A 91, 022311 (2015).\n\nJames D Whitfield, \"Spin-free quantum computational simulations and symmetry adapted states,\" Journal of Chemical Physics 139, 021105 (2013).\n\nLibor Veis and Ji´ı Pittner, \"Adiabatic state preparation study of methylene,\" The Journal of Chemical Physics 140, 1-21 (2014)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0038",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7
+    ],
+    "text": "Libor Veis and Ji´ı Pittner, \"Adiabatic state preparation study of methylene,\" The Journal of Chemical Physics 140, 1-21 (2014).\n\nLibor Veis, Jakub Viˇs´ ak, Hiromi Nakai, and Ji´ı Pittner, \"Quantum chemistry beyond Born-Oppenheimer approximation on a quantum computer: a simulated phase estimation study,\" e-print arXiv: 1507.03271 (2015).\n\nAndrew Tranter, Sarah Sofia, Jake Seeley, Michael Kaicher, Jarrod McClean, Ryan Babbush, Peter V. Coveney, Florian Mintert, Frank Wilhelm, and Peter J. Love, \"The Bravyi-Kitaev transformation: Properties and applications,\" International Journal of Quantum Chemistry 115, 1431-1441 (2015).\n\nRyan Babbush, Peter J. Love, and Al´ an Aspuru-Guzik, \"Adiabatic Quantum Simulation of Quantum Chemistry,\" Scientific Reports 4, 1-11 (2014)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0039",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      7,
+      8
+    ],
+    "text": "Ryan Babbush, Peter J. Love, and Al´ an Aspuru-Guzik, \"Adiabatic Quantum Simulation of Quantum Chemistry,\" Scientific Reports 4, 1-11 (2014).\n\nAlberto Peruzzo, Jarrod McClean, Peter Shadbolt, ManHong Yung, Xiao-Qi Zhou, Peter J. Love, Al´ an AspuruGuzik, and Jeremy L. O'Brien, \"A variational eigenvalue solver on a photonic quantum processor,\" Nature Communications 5, 1-7 (2014).\n\nMan-Hong Yung, J Casanova, A Mezzacapo, J. McClean, L Lamata, A. Aspuru-Guzik, and E Solano, \"From transistor to trapped-ion computers for quantum chemistry,\" Scientific Reports 4, 9 (2014).\n\nJarrod R. McClean, Ryan Babbush, Peter J. Love, and Al´ an Aspuru-Guzik, \"Exploiting locality in quantum computation for quantum chemistry,\" The Journal of Physical Chemistry Letters 5, 4368-4380 (2014).\n\nDave Wecker, Matthew B. Hastings, and Matthias Troyer, \"Progress towards practical quantum variational algorithms,\" Physical Review A 92, 042303 (2015)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0040",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "Jarrod R McClean, Jonathan Romero, Ryan Babbush, and Al´ an Aspuru-Guzik, \"The theory of variational hybrid quantum-classical algorithms,\" New Journal of Physics 18, 23023 (2016).\n\nBorzu Toloui and Peter J. Love, \"Quantum Algorithms for Quantum Chemistry based on the sparsity of the CImatrix,\" e-print arXiv: 1312.2579 (2013).\n\nRyan Babbush, Dominic W. Berry, Ian D. Kivlichan, Annie Y. Wei, Peter J. Love, and Al´ an AspuruGuzik, \"Exponentially More Precise Quantum Simulation of Fermions in Second Quantization,\" New Journal of Physics 18, 033032 (2016).\n\nRyan Babbush, Dominic W. Berry, Ian D. Kivlichan, Annie Y. Wei, Peter J. Love, and Al´ an Aspuru-Guzik, \"Exponentially More Precise Quantum Simulation of Fermions II: Quantum Chemistry in the CI Matrix Representation,\" e-print arXiv: 1506.01029 (2015)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0041",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "Colin J. Trout and Kenneth R. Brown, \"Magic state distillation and gate compilation in quantum algorithms for quantum chemistry,\" International Journal of Quantum Chemistry 115, 1296-1304 (2015).\n\nNikolaj Moll, Andreas Fuhrer, Peter Staar, and Ivano Tavernelli, \"Optimizing Qubit Resources for Quantum Chemistry Simulations in Second Quantization on a Quantum Computer,\" e-print arXiv:1510.04048 (2015).\n\nLeonie Mueck, \"Quantum reform,\" Nature Chemistry 7, 361-363 (2015).\n\nJohn M Martinis, \"Qubit metrology for building a faulttolerant quantum computer,\" e-print arXiv: 1502.01406 (2015).\n\nM W Johnson, M H S Amin, S Gildert, T Lanting, F Hamze, N Dickson, R Harris, A J Berkley, J Johansson, P Bunyk, E M Chapple, C Enderud, J P Hilton, K Karimi, E Ladizinsky, N Ladizinsky, T Oh, I Perminov, C Rich, M C Thom, E Tolkacheva, C J S Truncik, S Uchaikin, J Wang, B Wilson, and G Rose, \"Quantum annealing with manufactured spins,\" Nature 473, 194-198 (2011)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0042",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "R. Barends, A. Shabani, L. Lamata, J. Kelly, A. Mezzacapo, U. Las Heras, R. Babbush, A. Fowler, B. Campbell, Y. Chen, Z. Chen, B. Chiaro, A. Dunsworth, E. Jeffrey, E. Lucero, A. Megrant, J. Mutus, M. Neeley, C. Neill, P. O'Malley, C. Quintana, P. Roushan, D. Sank, A. Vainsencher, J. Wenner, T. White, E. Solano, H. Neven, and J. Martinis, \"Digitized Adiabatic Quantum Computing with a Superconducting Circuit,\" Nature 534, 222-226 (2016).\n\nJohn A Smolin, Graeme Smith, and Alexander Vargo, \"Oversimplifying quantum factoring.\" Nature 499, 1635 (2013).\n\nHale F Trotter, \"On the product of semi-groups of operators,\" Proc. Am. Math. Soc. 10, 545-551 (1959).\n\nAlexei Y. Kitaev, \"Quantum measurements and the Abelian Stabilizer Problem,\" e-print arXiv: 9511026 (1995)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0043",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "Alexei Y. Kitaev, \"Quantum measurements and the Abelian Stabilizer Problem,\" e-print arXiv: 9511026 (1995).\n\nB P Lanyon, J D Whitfield, G G Gillett, M E Goggin, M P Almeida, I Kassal, J D Biamonte, M Mohseni, B J Powell, M Barbieri, A Aspuru-Guzik, and a G White, \"Towards quantum chemistry on a quantum computer.\" Nature chemistry 2, 106-111 (2010).\n\nJiangfeng Du, Nanyang Xu, Xinhua Peng, Pengfei Wang, Sanfeng Wu, and Dawei Lu, \"NMR implementation of a molecular hydrogen quantum simulation with adiabatic state preparation.\" Physical Review Letters 104, 030502 (2010).\n\nYa Wang, Florian Dolde, Jacob Biamonte, Ryan Babbush, Ville Bergholm, Sen Yang, Ingmar Jakobi, Philipp Neumann, Al´an Aspuru-Guzik, James D Whitfield, and J¨ org Wrachtrup, \"Quantum Simulation of Helium Hydride Cation in a Solid-State Spin Register,\" ACS Nano 9, 7769-7774 (2015)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0044",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "Yangchao Shen, Xiang Zhang, Shuaining Zhang, JingNing Zhang, Man-Hong Yung, and Kihwan Kim, \"Quantum Implementation of Unitary Coupled Cluster for Simulating Molecular Electronic Structure,\" e-print arXiv: 1506:00443 (2015).\n\nR. D. Somma, G. Ortiz, J.E. Gubernatis, E. Knill, and R. Laflamme, \"Simulating physical phenomena by quantum networks,\" Physical Review A 65, 17 (2002).\n\nSergey Bravyi and Alexei Kitaev, \"Fermionic quantum computation,\" Annals of Physics 298, 210-226 (2002).\n\nJacob T. Seeley, Martin J. Richard, and Peter J Love, \"The Bravyi-Kitaev transformation for quantum computation of electronic structure,\" Journal of Chemical Physics 137, 224109 (2012).\n\nT Helgaker, P Jorgensen, and J Olsen, Molecular Electronic Structure Theory (Wiley, 2002).\n\nMark R. Hoffmann and Jack Simons, \"A unitary multiconfigurational coupled-cluster method: Theory and applications,\" The Journal of Chemical Physics 88, 993 (1988)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0045",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      8
+    ],
+    "text": "Rodney J. Bartlett, Stanislaw A. Kucharski, and Jozef Noga, \"Alternative coupled-cluster ans¨ atze II. The unitary coupled-cluster method,\" Chemical Physics Letters 155, 133-140 (1989).\n\nAndrew G. Taube and Rodney J. Bartlett, \"New perspectives on unitary coupled-cluster theory,\" International Journal of Quantum Chemistry 106, 3393-3401 (2006).\n\nChristopher M Bishop, Pattern Recognition and Machine Learning (Springer, New York, 2006).\n\nR Barends, J Kelly, A Megrant, D Sank, E Jeffrey, Y Chen, Y Yin, B Chiaro, J Mutus, C Neill, P O'Malley, P Roushan, J Wenner, T C White, A N Cleland, and John M Martinis, \"Coherent Josephson Qubit Suitable for Scalable Quantum Integrated Circuits,\" Physical Review Letters 111, 80502 (2013).\n\nJens Koch, Terri Yu, Jay Gambetta, A Houck, D Schuster, J Majer, Alexandre Blais, M Devoret, S Girvin, and R Schoelkopf, \"Charge-insensitive qubit design derived from the Cooper pair box,\" Physical Review A 76, 42319 (2007)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0046",
+    "source": "1512.06860v2.pdf",
+    "heading": "AUTHOR INFORMATION",
+    "heading_path": "AUTHOR INFORMATION",
+    "pages": [
+      9
+    ],
+    "text": "J Kelly, R Barends, B Campbell, Y Chen, Z Chen, B Chiaro, A. Dunsworth, a. G. Fowler, I.-C. Hoi, E Jeffrey, A. Megrant, J Mutus, C Neill, P J J O'Malley, C Quintana, P Roushan, D Sank, A. Vainsencher, J Wenner, T C White, A N Cleland, and John M Martinis, \"Optimal Quantum Control Using Randomized Benchmarking,\" Physical Review Letters 112, 240504 (2014)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0047",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix A: The electronic structure problem",
+    "heading_path": "Appendix A: The electronic structure problem",
+    "pages": [
+      9
+    ],
+    "text": "The central problem of quantum chemistry is to compute the lowest energy eigenvalue of the molecular electronic structure Hamiltonian. The eigenstates of this Hamiltonian determine almost all of the properties of interest in a molecule or material, and as the gap between the ground and first electronically excited state is often much larger than the thermal energy at room temperature, the ground state is of particular interest. To arrive at the standard form of this Hamiltonian used in quantum computation, one begins from a collection of nuclear charges Zi and a number of electrons in the system N for which the corresponding Hamiltonian is written\n\nwhere the positions, masses, and charges of the nuclei are Ri, Mi, Zi, and the positions of the electrons are ri. Here, the Hamiltonian is in atomic units of energy known as Hartree. One Hartree is ℏ2 mee2 a20 (630 kcal/mol or 27.2 eV) where me, e and a0 denote the mass of an electron, charge of an electron and Bohr radius, respectively."
+  },
+  {
+    "id": "1512.06860v2.pdf_0048",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix A: The electronic structure problem",
+    "heading_path": "Appendix A: The electronic structure problem",
+    "pages": [
+      9
+    ],
+    "text": "This form of the Hamiltonian and its real-space discretization are often referred to as the first quantized formulation of quantum chemistry. Several approaches have been developed for treating this form of the problem on a quantum computer; however, the focus of this work is the second quantized formulation. To reach the second quantized formulation, one typically first approximates the nuclei as fixed classical point charges under the Born-Oppenhemier approximation, chooses a basis φi in which to represent the wavefunction, and enforces anti-symmetry with the fermion creation and annihilation operators a†i and aj to give\n\nwith"
+  },
+  {
+    "id": "1512.06860v2.pdf_0049",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix A: The electronic structure problem",
+    "heading_path": "Appendix A: The electronic structure problem",
+    "pages": [
+      9
+    ],
+    "text": "with\n\nwhere σi is now a spatial and spin coordinate with σi = (ri, si), and the standard anti-commutation relations that determine the action of a†i and aj are {a†i, aj} = δij and {a†i, a†j } = {ai, aj} = 0. Finally, the second quantized Hamiltonian must be mapped into qubits for implementation on a quantum device. The most common mappings used for this purpose are the Jordan-Wigner transformation and the Bravyi-Kitaev transformation.\n\nFIG. 5. A flowchart describing steps required to quantum compute molecular energies using both PEA and VQE.\n\nUsing the Bravyi-Kitaev transformation, the spin Hamiltonian for molecular hydrogen in the minimal (STO-6G) basis, as reported in, is given by"
+  },
+  {
+    "id": "1512.06860v2.pdf_0050",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix A: The electronic structure problem",
+    "heading_path": "Appendix A: The electronic structure problem",
+    "pages": [
+      9
+    ],
+    "text": "Using the Bravyi-Kitaev transformation, the spin Hamiltonian for molecular hydrogen in the minimal (STO-6G) basis, as reported in, is given by\n\nwhere the values {fi} depend on the fixed bond length of the molecule. We notice that this Hamiltonian acts offdiagonally on only two qubits (the ones having tensor factors of 0 and 2), those colored in red in Eq. (A5). Because we start our simulations in the Hartree-Fock state, a classical basis state, we see that the Hamiltonian stabilizes qubits 1 and 3 so that they are never flipped throughout the simulation. We can use this symmetry to scalably reduce the Hamiltonian of interest to the following effective Hamiltonian which acts only on two qubits,"
+  },
+  {
+    "id": "1512.06860v2.pdf_0051",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix A: The electronic structure problem",
+    "heading_path": "Appendix A: The electronic structure problem",
+    "pages": [
+      9
+    ],
+    "text": "where the values {gi} depend on the fixed bond length of the molecule. We further note that the term Z0Z1 commutes with all other terms in the Hamiltonian. Since the ground state of the total Hamiltonian certainly has support on the Hartree-Fock state, we know the contribution to the total energy of Z0Z1 (it is given by the expectation of those terms with the Hartree-Fock state). Steps to prepare this Hamiltonian are summarized in the upper-half of Figure 5."
+  },
+  {
+    "id": "1512.06860v2.pdf_0052",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix B: Experimental methods for VQE",
+    "heading_path": "Appendix B: Experimental methods for VQE",
+    "pages": [
+      10
+    ],
+    "text": "For the VQE experiment, the qubits q0 and q1 are used, at 4.49 and 5.53 GHz, respectively, while all the other qubits are detuned to 3 GHz and below. Xπ, Yπ, ±Xπ/2, and ±Yπ/2 gates are 25 ns long, and pulse amplitudes and detunings from f10 are optimized with ORBIT; for these parameters, additional pulse shaping (e.g. DRAG) proved unnecessary (see for details of pulse detuning and shaping). The amplitude, trajectory, and compensating single-qubit phases of the CZπ gate are optimized with ORBIT as well. The duration of the CZπ is 55 ns, during which the frequency of q0 is fixed and q1 is moved. The rotation Zθ (the adjustable parameter in Eq. (3)) is implemented as a phase shift on all subsequent gates. As operated here, q0 and q1 have energy relaxation times T1 = 62.8 and 21.4 µs, and Ramsey decay times T ∗ 2 = 1.1 and 1.9 µs, respectively."
+  },
+  {
+    "id": "1512.06860v2.pdf_0053",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix B: Experimental methods for VQE",
+    "heading_path": "Appendix B: Experimental methods for VQE",
+    "pages": [
+      10
+    ],
+    "text": "The expectation values used to calculate the energy of the prepared state are measured with partial tomography; for example, X1X0 is measured by applying Yπ/2 gates to each qubit prior to measurement. We emphasize that for chemistry problems, the number of measurements scales polynomially. Readout duration is set to 1000 ns for higher fidelity (compared to, where the \"measure\"/odd-numbered qubits utilized much shorter readout). In addition to discriminating between |0〉 and |1〉, higher level qubit states were also measured (called |2〉 for simplicity). Readout fidelities are typically >99% for |0〉, and ∼95% for |1〉 and |2〉, and measurement probabilities are corrected for readout error. After readout correction, experiments where one of the qubits is measured in |2〉 are dropped; any probability to be in |2〉 is set to zero and remaining probabilities are renormalized."
+  },
+  {
+    "id": "1512.06860v2.pdf_0054",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix B: Experimental methods for VQE",
+    "heading_path": "Appendix B: Experimental methods for VQE",
+    "pages": [
+      10
+    ],
+    "text": "The circuit pulse sequence used to implement the UCC sequence in Eq. (3) is shown in Figure 1. The experiment is performed in different gauges of the Bravyi-Kitaev transform; these correspond to the |0〉 (|1〉) state of q0 representing the first orbital being unoccupied (occupied) or occupied (unoccupied), and similarly for q1 representing the parity of the first two orbitals being even (odd) or odd (even). In practice, a gauge change means a flip of the value of one or both qubits in the Hartree-Fock (HF) input state, and a sign change on the relevant terms of the Hamiltonian. In the standard gauge, the HF state is |01〉 and is prepared with an Xπ gate on q0. Statistics from the experiment in these gauges are then averaged together. We also drop the first -Yπ/2 on q0; for an input state of either |0〉 or |1〉, it has no effect given that Xπ/2 is the only gate preceding it."
+  },
+  {
+    "id": "1512.06860v2.pdf_0055",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix B: Experimental methods for VQE",
+    "heading_path": "Appendix B: Experimental methods for VQE",
+    "pages": [
+      10
+    ],
+    "text": "FIG. 6. Errors in the VQE energy surface (in Hartree) as a function of bond length and rotation angle. This plot looks somewhat like the derivative of Figure 2b with respect to R and θ because errors are greatest where the energy is most sensitive to changes in system parameters. As in Figure 2b, the white curve traces the theoretical minimum energy which is seen to be in good agreement with the data. Note that while errors in the energy surface are sometimes negative, all energies are bounded from below by the variational minimum."
+  },
+  {
+    "id": "1512.06860v2.pdf_0056",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix B: Experimental methods for VQE",
+    "heading_path": "Appendix B: Experimental methods for VQE",
+    "pages": [
+      10
+    ],
+    "text": "The energy for a given nuclear separation R is computed by calculating the value of the Hamiltonian with the expectation values measured for each θ and choosing the smallest energy. This is done for all values of R to construct the energy surface. Figure 2a shows the raw expectation values (after readout correction); Figure 2b shows the measured energy versus θ for each value of R and Figure 6 shows the errors in that surface. Error bars were computed from a Gaussian process regression applied to the potential energy curve obtained from Figure 2b using error estimates propagated from the shotnoise limited measurements shown in Figure 2a."
+  },
+  {
+    "id": "1512.06860v2.pdf_0057",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix C: Experimental methods for PEA",
+    "heading_path": "Appendix C: Experimental methods for PEA",
+    "pages": [
+      10
+    ],
+    "text": "The PEA experiment uses three qubits: q0 for the ancilla, and q1 and q2 for the register. Operating frequencies are 4.56, 5.65, and 4.80 GHz for q0, q1, and q2, respectively. Pulse tune-up is the same as for the VQE experiment. For the entangling gates (CZφ between q0 and q1, and CZπ between q1 and q2), however, the adjacent non-interacting qubit must be decoupled from the interaction. For the CZπ, q0 is decoupled with paired Xπ and -Xπ pulses; this has the effect of \"echoing out\" any acquired state-dependent phase on q0 from q1 and vice versa, while minimizing stray single-qubit phases on q0 by keeping its frequency stationary. For the CZφ, however, q2 is detuned to frequencies significantly below the q0-q1 interaction; while this makes single-qubit phases on q2 harder to compensate, it is more effective at minimizing the impact of q2 on the CZφ gate. This combination of decoupling methods was found to be optimal to minimize error on the phase of q0, which is the critical parameter in"
+  },
+  {
+    "id": "1512.06860v2.pdf_0058",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix C: Experimental methods for PEA",
+    "heading_path": "Appendix C: Experimental methods for PEA",
+    "pages": [
+      10
+    ],
+    "text": "the CZφ gate. This combination of decoupling methods was found to be optimal to minimize error on the phase of q0, which is the critical parameter in the PEA experiment."
+  },
+  {
+    "id": "1512.06860v2.pdf_0059",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix C: Experimental methods for PEA",
+    "heading_path": "Appendix C: Experimental methods for PEA",
+    "pages": [
+      11
+    ],
+    "text": "As the CZφ gate varies the amplitude of q1's frequency trajectory over a wide range (approximately 200 MHz to 950 MHz) particular values of φ can be more sensitive lossy parts of the q1's frequency spectrum that are rapidly swept past and easily compensated for in the standard case of only tuning up φ = π. Therefore, for some values of φ it is necessary to individually tune in compensating phases on q0. This is implemented by executing the individual term of the Hamiltonian, varying the compensating phase on q0, and fitting for the value that minimizes the error of that term. After performing this careful compensation when necessary, the experiment produces the bit values (0 or 1) for each different Hamiltonian (i.e. each separation R) at each evolution time t that match those predicted by numerical simulation."
+  },
+  {
+    "id": "1512.06860v2.pdf_0060",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix C: Experimental methods for PEA",
+    "heading_path": "Appendix C: Experimental methods for PEA",
+    "pages": [
+      11
+    ],
+    "text": "As operated in this experiment, q0, q1, and q2 have T1 values of 48.1, 23.7, and 43.0 µs, and T ∗ 2 times of 1.3, 1.6, and 0.8 µs, respectively. Figure 4 shows the pulses for one iteration of the PEA experiment; Figure 7 shows an example of the measurement results for one value of R. The parameters at each R are given in Table I. For reference, included in this section are the implementations of all the terms of the Bravyi-Kitaev Hamiltonian for molecular hydrogen. In the following diagrams, α is the ancilla qubit (q0 in the experiment), and 0 and 1 are the register qubits (q1 and q2 in the experiment). We must always be aware that representing our terms in terms of these gates, and then in terms of the actual basis, is not necessarily the most efficient approach."
+  },
+  {
+    "id": "1512.06860v2.pdf_0061",
+    "source": "1512.06860v2.pdf",
+    "heading": "CNOT",
+    "heading_path": "CNOT",
+    "pages": [
+      11
+    ],
+    "text": "CNOT is implemented as a CZπ and two rotations.\n\nSWAP is implemented as three consecutive CZπ gates with intermediate rotations.\n\nFIG. 7. Example data for a single PEA experiment, run at R = 1.55 ˚A. The results are shown without phase kickback from the measurements of the previous bit. The line at P|1〉 = 0.5 discriminates a measurement of 1 from 0."
+  },
+  {
+    "id": "1512.06860v2.pdf_0062",
+    "source": "1512.06860v2.pdf",
+    "heading": "Controlled evolution under Z1",
+    "heading_path": "Controlled evolution under Z1",
+    "pages": [
+      11
+    ],
+    "text": "Z1 is the same as Z0, but surrounded by SWAP gates so that the ancilla interacts with the other qubit.\n\nq1 ×\n\n×"
+  },
+  {
+    "id": "1512.06860v2.pdf_0063",
+    "source": "1512.06860v2.pdf",
+    "heading": "Controlled evolution under X0X1",
+    "heading_path": "Controlled evolution under X0X1",
+    "pages": [
+      11
+    ],
+    "text": "For X0X1, we first change bases with Yπ/2 gates, then compute the parity of the register qubits with a CNOT, then apply the controlled phase, and finally undo the parity computation and basis change. Note that the Yπ/2 gates will cancel on the middle qubit with our CNOT implementation."
+  },
+  {
+    "id": "1512.06860v2.pdf_0064",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      12
+    ],
+    "text": "The application of VQE requires the choice of an ansatz, and in this work we have focused on the unitary coupled cluster (UCC) ansatz. This ansatz is a unitary variant of the method sometimes referred to as the \"gold standard of quantum chemistry\", namely coupled cluster with single and double excitations with perturbative triples excitations. The unitary variant has the advantage of satisfying a variational principle with respect to all possible parameterizations. Furthermore, UCC can be easily applied to a multireference initial state whereas one of the major shortcomings of traditional coupled cluster is that it can only be applied to a single Slater determinant. While the unitary variant has no efficient preparation scheme on a classical computer, scalable methods of preparation for a fixed set of parameters on a quantum device have now been documented several times."
+  },
+  {
+    "id": "1512.06860v2.pdf_0065",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      12
+    ],
+    "text": "The UCC ansatz |ϕ(⃗ θ)〉 is defined with respect to a reference state, which in this work we take to be the Hartree-Fock state |φ〉,\n\nwhere T (⃗ θ) is the anti-Hermitian cluster operator:\n\nwhere the occ and virt spaces are defined as the occupied and unoccupied sites in the Hartree-Fock state and the definition of higher-order cluster operators (k)T follows naturally. When only including up to the first two terms in the cluster expansion, we term the ansatz unitary coupled cluster with single and doubles excitations (UCCSD)."
+  },
+  {
+    "id": "1512.06860v2.pdf_0066",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      12
+    ],
+    "text": "The task within VQE is to determine the optimal values of the one- and two-body cluster amplitudes θa1 i1 and θa1,a2 i1,i2, which are determined by the variational minimum of a nonlinear function. As with all nonlinear minimizations, the choice of starting parameters is key to algorithmic performance. As in classical coupled cluster, we can determine the starting amplitudes perturbatively through M¨oller-Plesset perturbation theory (MP2). For molecular hydrogen in the minimal basis, there is exactly one term in the UCCSD ansatz.\n\nThe MP2 guess amplitudes are given by the equations"
+  },
+  {
+    "id": "1512.06860v2.pdf_0067",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      12
+    ],
+    "text": "where ϵa refer to the 1-electron occupied and virtual orbital energies from the Hartree-Fock calculation and the hijab are computed as in Eq. (A3). In the MP2 guess, the vanishing of the singles amplitudes is a result of the fact that single excitations away from the Hartree-Fock reference do not couple through the Hamiltonian as a consequence of Brillouin's theorem. As the solution of the classical coupled cluster equations is also efficient, it is possible to use amplitudes from a method like CCSD as starting values as well. We note in both cases however, that the single-reference, perturbative nature of these constructions may lead to poor initial guesses for systems with strong multireference character or entanglement. In these cases the amplitudes may represent poor guesses, requiring more iterations for convergence. As such, a better initial guess in such problems may be a related optimization, such as a different molecular geometry of the same system. In cases where the"
+  },
+  {
+    "id": "1512.06860v2.pdf_0068",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      12
+    ],
+    "text": "a better initial guess in such problems may be a related optimization, such as a different molecular geometry of the same system. In cases where the perturbative estimates are accurate, one can discard operations related to very small amplitudes in the state preparation circuit, leading to computational savings."
+  },
+  {
+    "id": "1512.06860v2.pdf_0069",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "TABLE I. The Hamiltonian coefficients for Eq. (1) and parameters for the PEA experiment for each value of R.\n\nR 11 Z0 Z1 Z0Z1 X0X1 Y0Y1\n\nt0\n\nOrdering\n\nTrotter Error\n\n0.20 2.8489 0.5678 -1.4508 0.6799 0.0791 0.0791 1.500 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0124\n\n0.25 2.1868 0.5449 -1.2870 0.6719 0.0798 0.0798 1.590 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0521\n\n0.30 1.7252 0.5215 -1.1458 0.6631 0.0806 0.0806 1.770 X0X1 · Z0 · Y0Y1 · Z1\n\n0.0111\n\n0.35 1.3827 0.4982 -1.0226 0.6537 0.0815 0.0815 2.080 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0368\n\n0.40 1.1182 0.4754 -0.9145 0.6438 0.0825 0.0825 2.100 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0088\n\n0.45 0.9083 0.4534 -0.8194 0.6336 0.0835 0.0835 2.310 X0X1 · Z0 · Y0Y1 · Z1\n\n0.0141\n\n0.50 0.7381 0.4325 -0.7355 0.6233 0.0846 0.0846 2.580 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0672\n\n0.55 0.5979 0.4125 -0.6612 0.6129 0.0858 0.0858 2.700 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0147\n\n0.60 0.4808 0.3937 -0.5950 0.6025 0.0870 0.0870 2.250 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0167"
+  },
+  {
+    "id": "1512.06860v2.pdf_0070",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "0.0147\n\n0.60 0.4808 0.3937 -0.5950 0.6025 0.0870 0.0870 2.250 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0167\n\n0.65 0.3819 0.3760 -0.5358 0.5921 0.0883 0.0883 3.340 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0175\n\n0.70 0.2976 0.3593 -0.4826 0.5818 0.0896 0.0896 0.640 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0171\n\n0.75 0.2252 0.3435 -0.4347 0.5716 0.0910 0.0910 0.740 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0199\n\n0.80 0.1626 0.3288 -0.3915 0.5616 0.0925 0.0925 0.790 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0291\n\n0.85 0.1083 0.3149 -0.3523 0.5518 0.0939 0.0939 3.510 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0254\n\n0.90 0.0609 0.3018 -0.3168 0.5421 0.0954 0.0954 3.330 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0283\n\n0.95 0.0193 0.2895 -0.2845 0.5327 0.0970 0.0970 4.090 X0X1 · Z0 · Y0Y1 · Z1\n\n0.0328\n\n1.00 -0.0172 0.2779 -0.2550 0.5235 0.0986 0.0986 4.360 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0362\n\n1.05 -0.0493 0.2669 -0.2282 0.5146 0.1002 0.1002 4.650 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0405\n\n1.10 -0.0778 0.2565 -0.2036 0.5059 0.1018 0.1018 4.280 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0243"
+  },
+  {
+    "id": "1512.06860v2.pdf_0071",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "0.0405\n\n1.10 -0.0778 0.2565 -0.2036 0.5059 0.1018 0.1018 4.280 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0243\n\n1.15 -0.1029 0.2467 -0.1810 0.4974 0.1034 0.1034 5.510 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0497\n\n1.20 -0.1253 0.2374 -0.1603 0.4892 0.1050 0.1050 5.950 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0559\n\n1.25 -0.1452 0.2286 -0.1413 0.4812 0.1067 0.1067 6.360 X0X1 · Z1 · Y0Y1 · Z0\n\n0.0585\n\n1.30 -0.1629 0.2203 -0.1238 0.4735 0.1083 0.1083 0.660 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0905\n\n1.35 -0.1786 0.2123 -0.1077 0.4660 0.1100 0.1100 9.810 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0694\n\n1.40 -0.1927 0.2048 -0.0929 0.4588 0.1116 0.1116 9.930 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0755\n\n1.45 -0.2053 0.1976 -0.0792 0.4518 0.1133 0.1133 5.680 Y0Y1 · Z0 · X0X1 · Z1\n\n0.0142\n\n1.50 -0.2165 0.1908 -0.0666 0.4451 0.1149 0.1149 10.200 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0885\n\n1.55 -0.2265 0.1843 -0.0549 0.4386 0.1165 0.1165 9.830 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0917\n\n1.60 -0.2355 0.1782 -0.0442 0.4323 0.1181 0.1181 8.150 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0416"
+  },
+  {
+    "id": "1512.06860v2.pdf_0072",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "0.0917\n\n1.60 -0.2355 0.1782 -0.0442 0.4323 0.1181 0.1181 8.150 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0416\n\n1.65 -0.2436 0.1723 -0.0342 0.4262 0.1196 0.1196 8.240 X0X1 · Z0 · Y0Y1 · Z1\n\n0.0488\n\n1.70 -0.2508 0.1667 -0.0251 0.4204 0.1211 0.1211 0.520 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0450\n\n1.75 -0.2573 0.1615 -0.0166 0.4148 0.1226 0.1226 0.520 Z0 · Y0Y1 · Z1 · X0X1\n\n0.0509\n\n1.80 -0.2632 0.1565 -0.0088 0.4094 0.1241 0.1241 1.010 Z0 · X0X1 · Z1 · Y0Y1\n\n0.0663\n\n1.85 -0.2684 0.1517 -0.0015 0.4042 0.1256 0.1256 0.530 Z1 · X0X1 · Z0 · Y0Y1\n\n0.0163\n\n1.90 -0.2731 0.1472 0.0052 0.3992 0.1270 0.1270 1.090 X0X1 · Z0 · Z1 · Y0Y1\n\n0.0017\n\n1.95 -0.2774 0.1430 0.0114 0.3944 0.1284 0.1284 0.610 X0X1 · Z1 · Z0 · Y0Y1\n\n0.0873\n\n2.00 -0.2812 0.1390 0.0171 0.3898 0.1297 0.1297 1.950 Z1 · Z0 · X0X1 · Y0Y1\n\n0.0784\n\n2.05 -0.2847 0.1352 0.0223 0.3853 0.1310 0.1310 4.830 X0X1 · Y0Y1 · Z0 · Z1\n\n0.0947\n\n2.10 -0.2879 0.1316 0.0272 0.3811 0.1323 0.1323 1.690 Y0Y1 · X0X1 · Z0 · Z1\n\n0.0206"
+  },
+  {
+    "id": "1512.06860v2.pdf_0073",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "0.0947\n\n2.10 -0.2879 0.1316 0.0272 0.3811 0.1323 0.1323 1.690 Y0Y1 · X0X1 · Z0 · Z1\n\n0.0206\n\n2.15 -0.2908 0.1282 0.0317 0.3769 0.1335 0.1335 0.430 X0X1 · Y0Y1 · Z0 · Z1\n\n0.0014\n\n2.20 -0.2934 0.1251 0.0359 0.3730 0.1347 0.1347 1.750 Z0 · Z1 · X0X1 · Y0Y1\n\n0.0107\n\n2.25 -0.2958 0.1221 0.0397 0.3692 0.1359 0.1359 11.500 X0X1 · Z1 · Z0 · Y0Y1\n\n0.0946\n\n2.30 -0.2980 0.1193 0.0432 0.3655 0.1370 0.1370 0.420 Z0 · Z1 · X0X1 · Y0Y1\n\n0.0370\n\n2.35 -0.3000 0.1167 0.0465 0.3620 0.1381 0.1381 0.470 Z1 · Z0 · Y0Y1 · X0X1\n\n0.0762\n\n2.40 -0.3018 0.1142 0.0495 0.3586 0.1392 0.1392 10.100 X0X1 · Z1 · Z0 · Y0Y1\n\n0.0334\n\n2.45 -0.3035 0.1119 0.0523 0.3553 0.1402 0.1402 11.200 Z0 · Z1 · X0X1 · Y0Y1\n\n0.0663\n\n2.50 -0.3051 0.1098 0.0549 0.3521 0.1412 0.1412 0.580 Z0 · Y0Y1 · X0X1 · Z1\n\n0.0296\n\n2.55 -0.3066 0.1078 0.0572 0.3491 0.1422 0.1422 11.000 Z0 · Z1 · X0X1 · Y0Y1\n\n0.0550\n\n2.60 -0.3079 0.1059 0.0594 0.3461 0.1432 0.1432 11.000 Z0 · X0X1 · Y0Y1 · Z1\n\n0.0507"
+  },
+  {
+    "id": "1512.06860v2.pdf_0074",
+    "source": "1512.06860v2.pdf",
+    "heading": "Appendix D: Unitary coupled cluster",
+    "heading_path": "Appendix D: Unitary coupled cluster",
+    "pages": [
+      13
+    ],
+    "text": "0.0550\n\n2.60 -0.3079 0.1059 0.0594 0.3461 0.1432 0.1432 11.000 Z0 · X0X1 · Y0Y1 · Z1\n\n0.0507\n\n2.65 -0.3092 0.1042 0.0614 0.3433 0.1441 0.1441 11.040 Z1 · X0X1 · Y0Y1 · Z0\n\n0.0490\n\n2.70 -0.3104 0.1026 0.0632 0.3406 0.1450 0.1450 0.400 Z0 · Z1 · Y0Y1 · X0X1\n\n0.0471\n\n2.75 -0.3115 0.1011 0.0649 0.3379 0.1458 0.1458 0.450 Y0Y1 · Z0 · Z1 · X0X1\n\n0.0061\n\n2.80 -0.3125 0.0997 0.0665 0.3354 0.1467 0.1467 0.950 Z0 · Y0Y1 · X0X1 · Z1\n\n0.0368\n\n2.85 -0.3135 0.0984 0.0679 0.3329 0.1475 0.1475 10.600 Z0 · X0X1 · Y0Y1 · Z1\n\n0.0324"
+  }
+]
