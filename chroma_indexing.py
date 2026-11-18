@@ -13,6 +13,10 @@ import shutil
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
+from doc_process import DocumentProcessor 
+from text_process import chunk , to_documents
+from tqdm import tqdm
+
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
@@ -81,17 +85,20 @@ class VectorStore:
         ids = list(unique)
 
         existing: set[str] = set()
-        for i in range(0, len(ids), self.batch_size):
-            existing.update(self.db.get(ids=ids[i : i + self.batch_size])["ids"])
+        #for i in range(0, len(ids), self.batch_size):
+        #   existing.update(self.db.get(ids=ids[i : i + self.batch_size])["ids"])
 
         new_ids = [i for i in ids if i not in existing]
-        for i in range(0, len(new_ids), self.batch_size):
+
+        for i in tqdm (range (0, len(new_ids), self.batch_size) , desc="Indexing papers chunks"):
             batch = new_ids[i : i + self.batch_size]
             self.db.add_documents([unique[b] for b in batch], ids=batch)
 
         if autosave:
             self.save()
         return len(new_ids)
+
+    
 
     # ---------- reading ----------
     def count(self) -> int:
@@ -152,13 +159,28 @@ class VectorStore:
 
 
 if __name__ == "__main__":
-    from langchain_community.document_loaders import PyPDFDirectoryLoader
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    
 
     store = VectorStore("chroma_db")
     print("Chunks already stored:", store.count())
+    #pdf_path = Path("papers/1512.06860v2.pdf")
+    #processor = DocumentProcessor(pdf_path)
+    #processor.process()
+    #chunks = chunk(processor.document , chunk_size=1000, overlap=150)
+    with open("SavedChunks/papers_chunks.json", encoding="utf-8") as f:
+        doc_chunks = json.load(f)
 
-    docs = PyPDFDirectoryLoader("papers/").load()
-    chunks = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150).split_documents(docs)
-    print("Added:", store.add_documents(chunks), "new chunks")
-    print("Total:", store.count(), "chunks from", len(store.sources()), "papers")
+    vector_db = VectorStore()
+    docs = []
+    for chunks in doc_chunks : 
+        docs.extend(to_documents(chunks))
+
+    vector_db.add_documents(docs)
+
+    results = store.search(query="How to calculate eigenvalues of a Hamiltonian ? " )
+    for r in results : 
+        print('Retreived chunk : ' , r.page_content )
+
+
+    #print("Added:", store.add_documents(to_documents(chunks)), "new chunks")
+    #print("Total:", store.count(), "chunks from", len(store.sources()), "papers")

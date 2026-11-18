@@ -69,3 +69,21 @@ def chunk(document , chunk_size=1000, overlap=150, min_chars=80):
                     "text": piece.page_content,
                 })
         return chunks
+
+from langchain_core.documents import Document
+
+def to_documents(chunks: list[dict]) -> list[Document]:
+    return [
+        Document(
+            page_content=c["text"],
+            metadata={
+                "id": c["id"],
+                "source": c["source"],
+                "heading": c["heading"],
+                "heading_path": c["heading_path"],
+                "page_start": c["pages"][0] if c["pages"] else -1,
+                "page_end": c["pages"][-1] if c["pages"] else -1,
+            },
+        )
+        for c in chunks
+    ]
