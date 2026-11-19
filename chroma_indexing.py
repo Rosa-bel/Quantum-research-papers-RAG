@@ -157,6 +157,9 @@ class VectorStore:
         shutil.copytree(self.persist_directory, destination)
         return str(Path(destination).resolve())
 
+    def retreiver(self):
+        return self.db.as_retriever(search_kwargs={"k": 5})
+
 
 if __name__ == "__main__":
     
