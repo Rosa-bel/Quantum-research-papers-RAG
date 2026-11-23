@@ -1,6 +1,18 @@
 .env
 .venv/
-chroma_db/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local vector database and downloaded/generated paper artifacts
+/chroma_db/
+RAG/chroma_db/
+RAG/papers/
+
+# Frontend dependencies and production build
+frontend/node_modules/
+frontend/dist/
+
+
 RAG.ipynb
 papers/
-__pycache__

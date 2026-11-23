@@ -2,7 +2,7 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from text_process import clean_text , chunk 
+from RAG.text_process import clean_text , chunk 
 
 
 from docling.datamodel.base_models import InputFormat

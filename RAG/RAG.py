@@ -1,4 +1,4 @@
-from chroma_indexing import VectorStore
+from RAG.chroma_indexing import VectorStore
 from dotenv import  load_dotenv
 from langchain_openai import ChatOpenAI
 import os

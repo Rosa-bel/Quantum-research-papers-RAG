@@ -13,8 +13,8 @@ import shutil
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
-from doc_process import DocumentProcessor 
-from text_process import chunk , to_documents
+from RAG.doc_process import DocumentProcessor 
+from RAG.text_process import chunk , to_documents
 from tqdm import tqdm
 
 
@@ -33,7 +33,7 @@ class VectorStore:
 
     def __init__(
         self,
-        persist_directory: str = "chroma_db",
+        persist_directory: str = "RAG/chroma_db",
         embedding_model: str = "BAAI/bge-m3",
         collection_name: str = "papers",
         batch_size: int = 256,
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     #processor = DocumentProcessor(pdf_path)
     #processor.process()
     #chunks = chunk(processor.document , chunk_size=1000, overlap=150)
-    with open("SavedChunks/papers_chunks.json", encoding="utf-8") as f:
+    with open("RAG/SavedChunks/papers_chunks.json", encoding="utf-8") as f:
         doc_chunks = json.load(f)
 
     vector_db = VectorStore()
